@@ -49,7 +49,7 @@ class Create extends React.Component<RouteComponentProps, IFormState> {
 
         this.setState({ submitSuccess: true, values: [...this.state.values, formData], loading: false });
 
-        axios.post(`http://localhost:5000/customers`, formData).then(data => [
+        axios.post(`http://localhost:5000/employees`, formData).then(data => [
             setTimeout(() => {
                 this.props.history.push('/');
             }, 1500)
@@ -84,27 +84,27 @@ class Create extends React.Component<RouteComponentProps, IFormState> {
                     <form id={"create-post-form"} onSubmit={this.processFormSubmission} noValidate={true}>
                         <div className="form-group col-md-12">
                             <label htmlFor="first_name"> First Name </label>
-                            <input type="text" id="first_name" onChange={(e) => this.handleInputChanges(e)} name="first_name" className="form-control" placeholder="Enter customer's first name" />
+                            <input type="text" id="first_name" onChange={(e) => this.handleInputChanges(e)} name="first_name" className="form-control" placeholder="Enter employee's first name" />
                         </div>
 
                         <div className="form-group col-md-12">
                             <label htmlFor="last_name"> Last Name </label>
-                            <input type="text" id="last_name" onChange={(e) => this.handleInputChanges(e)} name="last_name" className="form-control" placeholder="Enter customer's last name" />
+                            <input type="text" id="last_name" onChange={(e) => this.handleInputChanges(e)} name="last_name" className="form-control" placeholder="Enter employee's last name" />
                         </div>
 
                         <div className="form-group col-md-12">
                             <label htmlFor="email"> Email </label>
-                            <input type="email" id="email" onChange={(e) => this.handleInputChanges(e)} name="email" className="form-control" placeholder="Enter customer's email address" />
+                            <input type="email" id="email" onChange={(e) => this.handleInputChanges(e)} name="email" className="form-control" placeholder="Enter employee's email address" />
                         </div>
 
                         <div className="form-group col-md-12">
                             <label htmlFor="phone"> Phone </label>
-                            <input type="text" id="phone" onChange={(e) => this.handleInputChanges(e)} name="phone" className="form-control" placeholder="Enter customer's phone number" />
+                            <input type="text" id="phone" onChange={(e) => this.handleInputChanges(e)} name="phone" className="form-control" placeholder="Enter employee's phone number" />
                         </div>
 
                         <div className="form-group col-md-12">
                             <label htmlFor="address"> Address </label>
-                            <input type="text" id="address" onChange={(e) => this.handleInputChanges(e)} name="address" className="form-control" placeholder="Enter customer's address" />
+                            <input type="text" id="address" onChange={(e) => this.handleInputChanges(e)} name="address" className="form-control" placeholder="Enter employees's address" />
                         </div>
 
                         <div className="form-group col-md-12">
@@ -114,7 +114,7 @@ class Create extends React.Component<RouteComponentProps, IFormState> {
 
                         <div className="form-group col-md-4 pull-right">
                             <button className="btn btn-success" type="submit">
-                                Create Customer
+                                Create Employee
               </button>
                             {loading &&
                                 <span className="fa fa-circle-o-notch fa-spin" />

@@ -3,34 +3,34 @@ import { Link, RouteComponentProps } from 'react-router-dom';
 import axios from 'axios';
 
 interface IState {
-    customers: any[];
+    employees: any[];
 }
 
 export default class Home extends React.Component<RouteComponentProps, IState> {
     constructor(props: RouteComponentProps) {
         super(props);
-        this.state = { customers: [] }
+        this.state = { employees: [] }
     }
     public componentDidMount(): void {
-        axios.get(`http://localhost:5000/customers`).then(data => {
-            this.setState({ customers: data.data })
+        axios.get(`http://localhost:5000/employees`).then(data => {
+            this.setState({ employees: data.data })
         })
     }
-    public deleteCustomer(id: number) {
-        axios.delete(`http://localhost:5000/customers/${id}`).then(data => {
-            const index = this.state.customers.findIndex(customer => customer.id === id);
-            this.state.customers.splice(index, 1);
+    public deleteEmployee(id: number) {
+        axios.delete(`http://localhost:5000/employees/${id}`).then(data => {
+            const index = this.state.employees.findIndex(employees => employees.id === id);
+            this.state.employees.splice(index, 1);
             this.props.history.push('/');
         })
     }
 
 public render() {
-    const customers = this.state.customers;
+    const employees = this.state.employees;
     return (
         <div>
-            {customers.length === 0 && (
+            {employees.length === 0 && (
                 <div className="text-center">
-                    <h2>No customer found at the moment</h2>
+                    <h2>No employee found at the moment</h2>
                 </div>
             )}
             <div className="container">
@@ -48,19 +48,19 @@ public render() {
                             </tr>
                         </thead>
                         <tbody>
-                            {customers && customers.map(customer =>
-                                <tr key={customer.id}>
-                                    <td>{customer.first_name}</td>
-                                    <td>{customer.last_name}</td>
-                                    <td>{customer.email}</td>
-                                    <td>{customer.phone}</td>
-                                    <td>{customer.address}</td>
-                                    <td>{customer.description}</td>
+                            {employees && employees.map(employees =>
+                                <tr key={employees.id}>
+                                    <td>{employees.first_name}</td>
+                                    <td>{employees.last_name}</td>
+                                    <td>{employees.email}</td>
+                                    <td>{employees.phone}</td>
+                                    <td>{employees.address}</td>
+                                    <td>{employees.description}</td>
                                     <td>
                                         <div className="d-flex justify-content-between align-items-center">
                                             <div className="btn-group" style={{ marginBottom: "20px" }}>
-                                                <Link to={`edit/${customer.id}`} className="btn btn-sm btn-outline-secondary">Edit Customer </Link>
-                                                <button className="btn btn-sm btn-outline-secondary" onClick={() => this.deleteCustomer(customer.id)}>Delete Customer</button>
+                                                <Link to={`edit/${employees.id}`} className="btn btn-sm btn-outline-secondary">Edit Employees </Link>
+                                                <button className="btn btn-sm btn-outline-secondary" onClick={() => this.deleteEmployee(employees.id)}>Delete Employees</button>
                                             </div>
                                         </div>
                                     </td>
